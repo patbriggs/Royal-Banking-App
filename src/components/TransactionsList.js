@@ -1,7 +1,6 @@
 import React from 'react'
 
-const TransactionsList = () => {
-
+const TransactionsList = (props) => {
   return (
     <table className="ui celled striped padded table">
       <tbody>
@@ -27,9 +26,23 @@ const TransactionsList = () => {
             </h3>
           </th>
         </tr>
-
-        {"... your code here..."}
-
+        {props.T !== null ? props.T.map((transaction, i) => {
+          return (
+            <tr key={i}>
+              <td>
+              <p>{transaction.posted_at}</p>
+            </td>
+            <td>
+              <p>{transaction.description}</p>
+            </td>
+            <td>
+              <p>{transaction.category}</p>
+            </td>
+            <td>
+              <p>{transaction.amount}</p>
+            </td>
+            </tr>
+        ) }) : null }
       </tbody>
     </table>
   )
